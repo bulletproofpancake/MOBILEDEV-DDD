@@ -20,5 +20,11 @@ namespace Core
             _buildingMovementRate += Time.deltaTime / buildingRate * 0.001f;
             return _buildingMovementRate;
         }
+
+        public void GameOver()
+        {
+            //TODO: GAME OVER
+        }
+        
     }
 }

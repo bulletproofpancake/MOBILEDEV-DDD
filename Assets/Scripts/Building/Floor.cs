@@ -36,6 +36,5 @@ namespace Building
         {
             _material.color = color;
         }
-    
     }
 }

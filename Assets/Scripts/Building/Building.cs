@@ -101,19 +101,16 @@ namespace Building
         /// </param>
         public void DestroyFloor(Floor floor, bool isWeak)
         {
-            //TODO: INSTANTIATE SMOKE/DESTRUCTION EFFECT
             StartCoroutine(DestroyBuilding(floor, isWeak));
             if (isWeak)
             {
                 floor.gameObject.SetActive(false);
-                //TODO: ADD SCORE TO PLAYER
-                print("weak floor destroyed");
-                ClearBuilding();
                 ScoreManager.Instance.AddScore(scoreValue);
+                ClearBuilding();
             }
             else
             {
-                //TODO: GAME OVER
+                GameManager.Instance.GameOver();
                 print("game over");
             }
         }
@@ -144,7 +141,15 @@ namespace Building
             Destroy(fx);
             gameObject.SetActive(false);
         }
-        
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Despawner"))
+            {
+                gameObject.SetActive(false);
+                GameManager.Instance.GameOver();
+            }
+        }
         // private IEnumerator DestroyBuilding(bool isCorrect, GameObject effect)
         // {
         //     foreach (var floor in _floors)
