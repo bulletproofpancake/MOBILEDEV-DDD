@@ -16,7 +16,13 @@ public class Floor : MonoBehaviour
     {
         BuildingBehavior.Instance.AddFloors(this);
     }
-    
+
+    private void OnDisable()
+    {
+        BuildingBehavior.Instance.RemoveFloors(this);
+        isWeak = false;
+    }
+
     private void Update()
     {
         _material.color = isWeak ? Color.yellow : Color.white;
