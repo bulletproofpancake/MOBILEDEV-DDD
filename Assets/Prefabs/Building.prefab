@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703c7f1337a0ad469bfc69d0f05ec55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementDecreaseRate: 4
   floorPool: {fileID: 304284162596564237}
   minNumberOfFloors: 2
   maxNumberOfFloors: 5

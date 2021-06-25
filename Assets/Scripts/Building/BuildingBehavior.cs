@@ -2,20 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using Core;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Building
 {
     public class BuildingBehavior : MonoBehaviour
     {
+        [Header("Movement")]
+        [Range(1,4)]
+        [Tooltip("Determines the rate of how fast the building moves. Higher is slower.")]
+        [SerializeField] private int movementDecreaseRate;
+
+        [Header("Floor Spawning")]
         [SerializeField] private ObjectPool floorPool;
         [SerializeField] private int minNumberOfFloors;
         [SerializeField] private int maxNumberOfFloors;
-        [SerializeField] private GameObject destructionEffect, brokenEffect;
+
+        [Header("Effects")]
+        [SerializeField] private GameObject destructionEffect;
+        [SerializeField] private GameObject brokenEffect;
 
         private List<GameObject> _buildingFloors = new List<GameObject>();
         private List<Floor> _floors = new List<Floor>();
         private Floor _weakFloor;
 
+        private float _movementSpeed;
+        
         private void OnEnable()
         {
             SpawnFloors();
@@ -24,6 +36,18 @@ namespace Building
         private void OnDisable()
         {
             ClearBuilding();
+        }
+
+        private void Update()
+        {
+            Move();
+        }
+
+        private void Move()
+        {
+            // Movement speed is added to delta time so that it gets faster as the game progresses.
+            _movementSpeed += Time.deltaTime / movementDecreaseRate;
+            transform.Translate(Vector3.left * (_movementSpeed * Time.deltaTime));
         }
 
         private void SpawnFloors()
