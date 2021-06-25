@@ -4,7 +4,7 @@ namespace Building
 {
     public class Floor : MonoBehaviour
     {
-        public BuildingBehavior building;
+        public Building building;
         private Material _material;
         public bool isWeak;
     

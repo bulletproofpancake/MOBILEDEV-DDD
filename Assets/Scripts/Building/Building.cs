@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace Building
 {
-    public class BuildingBehavior : MonoBehaviour
+    public class Building : MonoBehaviour
     {
         [Header("Floor Spawning")]
         [SerializeField] private ObjectPool floorPool;
@@ -16,6 +16,9 @@ namespace Building
         [Header("Effects")]
         [SerializeField] private GameObject destructionEffect;
         [SerializeField] private GameObject brokenEffect;
+
+        [Header("Scoring")]
+        [SerializeField] private int scoreValue;
 
         private List<GameObject> _buildingFloors = new List<GameObject>();
         private List<Floor> _floors = new List<Floor>();
@@ -106,6 +109,7 @@ namespace Building
                 //TODO: ADD SCORE TO PLAYER
                 print("weak floor destroyed");
                 ClearBuilding();
+                ScoreManager.Instance.AddScore(scoreValue);
             }
             else
             {
