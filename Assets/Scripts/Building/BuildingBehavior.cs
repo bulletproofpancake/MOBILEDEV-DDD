@@ -10,7 +10,7 @@ namespace Building
         [SerializeField] private ObjectPool floorPool;
         [SerializeField] private int minNumberOfFloors;
         [SerializeField] private int maxNumberOfFloors;
-        [SerializeField] private GameObject destructionEffect;
+        [SerializeField] private GameObject destructionEffect, brokenEffect;
 
         private List<GameObject> _buildingFloors = new List<GameObject>();
         private List<Floor> _floors = new List<Floor>();
@@ -81,7 +81,7 @@ namespace Building
         public void DestroyFloor(Floor floor, bool isWeak)
         {
             //TODO: INSTANTIATE SMOKE/DESTRUCTION EFFECT
-            StartCoroutine(DestroyBuilding(floor));
+            StartCoroutine(DestroyBuilding(floor, isWeak));
             if (isWeak)
             {
                 floor.gameObject.SetActive(false);
@@ -92,14 +92,19 @@ namespace Building
             else
             {
                 //TODO: GAME OVER
-                ClearBuilding();
                 print("game over");
             }
         }
-
-        private IEnumerator DestroyBuilding(Floor floor)
+        
+        /// <summary>
+        /// Instantiates the explosion/dust particle system and despawns the building.
+        /// </summary>
+        /// <param name="floor">The floor where the particle effect will spawn</param>
+        /// <param name="isCorrect">Determines what type of particle effect will be spawned</param>
+        /// <returns></returns>
+        private IEnumerator DestroyBuilding(Floor floor, bool isCorrect)
         {
-            var fx = Instantiate(destructionEffect, transform);
+            var fx = isCorrect ? Instantiate(destructionEffect, transform) : Instantiate(brokenEffect, transform);
             fx.transform.position = floor.transform.position;
             var duration = fx.GetComponent<ParticleSystem>().main.duration;
             yield return new WaitForSeconds(duration);
