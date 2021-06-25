@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Floor : MonoBehaviour
@@ -23,16 +21,18 @@ public class Floor : MonoBehaviour
     {
         if (building == null) return;
         building.RemoveFloors(this);
+        ChangeColor(Color.white);
         isWeak = false;
-    }
-
-    private void Update()
-    {
-        _material.color = isWeak ? Color.yellow : Color.white;
     }
 
     private void OnMouseDown()
     {
         building.DestroyFloor(this, isWeak);
     }
+
+    public void ChangeColor(Color color)
+    {
+        _material.color = color;
+    }
+    
 }

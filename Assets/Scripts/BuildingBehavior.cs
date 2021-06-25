@@ -1,5 +1,5 @@
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class BuildingBehavior : MonoBehaviour
@@ -9,7 +9,7 @@ public class BuildingBehavior : MonoBehaviour
     [SerializeField] private int maxNumberOfFloors;
 
     private List<GameObject> _buildingFloors = new List<GameObject>();
-    [SerializeField] private List<Floor> _floors = new List<Floor>();
+    private List<Floor> _floors = new List<Floor>();
     private Floor _weakFloor;
 
     private void OnEnable()
@@ -44,8 +44,7 @@ public class BuildingBehavior : MonoBehaviour
     {
         _weakFloor = _floors[Random.Range(0, _floors.Count)];
         _weakFloor.isWeak = true;
-        
-        print(_weakFloor);
+        _weakFloor.ChangeColor(Color.yellow);
     }
 
     private void ClearBuilding()
@@ -84,12 +83,24 @@ public class BuildingBehavior : MonoBehaviour
             floor.gameObject.SetActive(false);
             //TODO: ADD SCORE TO PLAYER
             print("weak floor destroyed");
+            StartCoroutine(DestroyBuilding(true));
         }
         else
         {
             //TODO: GAME OVER
+            StartCoroutine(DestroyBuilding(false));
             print("game over");
         }
+    }
+
+    private IEnumerator DestroyBuilding(bool isCorrect)
+    {
+        foreach (var floor in _floors)
+        {
+            floor.ChangeColor(isCorrect ? Color.green : Color.red);
+        }
+        yield return new WaitForSeconds(1f);
+        ClearBuilding();
     }
 
 }

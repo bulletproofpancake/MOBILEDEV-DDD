@@ -9,7 +9,7 @@ public class ObjectPool : MonoBehaviour
     
     [SerializeField] private List<GameObject> _pooledObjects;
 
-    private void OnEnable()
+    private void Awake()
     {
         PopulatePool();
     }
