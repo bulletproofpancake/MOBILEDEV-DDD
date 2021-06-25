@@ -4,10 +4,9 @@ namespace Core
 {
     public class GameManager : Singleton<GameManager>
     {
-        [Header("Movement")]
+        [Header("Building Movement")]
         [Tooltip("Determines the rate of how slow the building moves. Higher is slower.")]
         [SerializeField] private int buildingRate;
-
         private float _buildingMovementRate;
 
         /// <summary>
@@ -16,8 +15,8 @@ namespace Core
         /// <returns>The movement rate for the building</returns>
         public float BuildingMovementRate()
         {
-            // buildingRate and 0.01f are random values chosen through trial and error until the movement feels natural.
-            _buildingMovementRate += Time.deltaTime / buildingRate * 0.01f;
+            // buildingRate and 0.001f are random values chosen through trial and error until the movement feels natural.
+            _buildingMovementRate += Time.deltaTime / buildingRate * 0.001f;
             return _buildingMovementRate;
         }
     }
