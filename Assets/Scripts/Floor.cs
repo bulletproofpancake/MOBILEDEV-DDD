@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
+    public BuildingBehavior building;
     private Material _material;
     public bool isWeak;
     
@@ -14,12 +15,14 @@ public class Floor : MonoBehaviour
     
     private void OnEnable()
     {
-        BuildingBehavior.Instance.AddFloors(this);
+        if (building == null) return;
+        building.AddFloors(this);
     }
 
     private void OnDisable()
     {
-        BuildingBehavior.Instance.RemoveFloors(this);
+        if (building == null) return;
+        building.RemoveFloors(this);
         isWeak = false;
     }
 
@@ -30,6 +33,6 @@ public class Floor : MonoBehaviour
 
     private void OnMouseDown()
     {
-        BuildingBehavior.Instance.DestroyFloor(this, isWeak);
+        building.DestroyFloor(this, isWeak);
     }
 }

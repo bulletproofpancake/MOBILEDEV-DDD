@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BuildingBehavior : Singleton<BuildingBehavior>
+public class BuildingBehavior : MonoBehaviour
 {
-    [SerializeField] private GameObject floorPrefab;
+    [SerializeField] private ObjectPool floorPool;
     [SerializeField] private int minNumberOfFloors;
     [SerializeField] private int maxNumberOfFloors;
 
@@ -29,11 +29,12 @@ public class BuildingBehavior : Singleton<BuildingBehavior>
         
         for (var i = 0; i < amountOfFloors; i++)
         {
-            //TODO: SWITCH TO AN OBJECT POOL
-            var floor = Instantiate(floorPrefab, transform);
+            var floor = floorPool.GetPooledObject();
             var position = transform.position;
             floor.transform.position = new Vector3(position.x, position.y + i, position.z);
             _buildingFloors.Add(floor);
+            floor.GetComponent<Floor>().building = this;
+            floor.SetActive(true);
         }
         
         SelectFloor();
@@ -51,7 +52,7 @@ public class BuildingBehavior : Singleton<BuildingBehavior>
     {
         foreach (var floor in _buildingFloors)
         {
-            Destroy(floor);
+            floor.SetActive(false);
         }
     }
     
