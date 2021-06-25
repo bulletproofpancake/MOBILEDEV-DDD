@@ -8,11 +8,6 @@ namespace Building
 {
     public class BuildingBehavior : MonoBehaviour
     {
-        [Header("Movement")]
-        [Range(1,4)]
-        [Tooltip("Determines the rate of how fast the building moves. Higher is slower.")]
-        [SerializeField] private int movementDecreaseRate;
-
         [Header("Floor Spawning")]
         [SerializeField] private ObjectPool floorPool;
         [SerializeField] private int minNumberOfFloors;
@@ -45,8 +40,7 @@ namespace Building
 
         private void Move()
         {
-            // Movement speed is added to delta time so that it gets faster as the game progresses.
-            _movementSpeed += Time.deltaTime / movementDecreaseRate;
+            _movementSpeed += GameManager.Instance.BuildingMovementRate();
             transform.Translate(Vector3.left * (_movementSpeed * Time.deltaTime));
         }
 
@@ -128,6 +122,17 @@ namespace Building
         /// <returns></returns>
         private IEnumerator DestroyBuilding(Floor floor, bool isCorrect)
         {
+            #region Expanded Version
+                // GameObject fx;
+                // if (isCorrect)
+                // {
+                //     fx = Instantiate(destructionEffect, transform);
+                // }
+                // else
+                // {
+                //     fx = Instantiate(brokenEffect, transform);
+                // }
+            #endregion
             var fx = isCorrect ? Instantiate(destructionEffect, transform) : Instantiate(brokenEffect, transform);
             fx.transform.position = floor.transform.position;
             var duration = fx.GetComponent<ParticleSystem>().main.duration;
