@@ -47,6 +47,8 @@ MonoBehaviour:
   floorPool: {fileID: 304284162596564237}
   minNumberOfFloors: 2
   maxNumberOfFloors: 5
+  destructionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+    type: 3}
 --- !u!1 &304284162596564239
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c319ee5425eedd745b548267f8c3dd0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 7978628529068776556, guid: 4427669d56008d0489f6343555fbddc1, type: 3}
+  objectToPool: {fileID: 7978628529068776556, guid: 4427669d56008d0489f6343555fbddc1,
+    type: 3}
   amountToPool: 1
-  _pooledObjects: []
+  pooledObjects: []

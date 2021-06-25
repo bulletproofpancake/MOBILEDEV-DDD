@@ -10,6 +10,7 @@ namespace Building
         [SerializeField] private ObjectPool floorPool;
         [SerializeField] private int minNumberOfFloors;
         [SerializeField] private int maxNumberOfFloors;
+        [SerializeField] private GameObject destructionEffect;
 
         private List<GameObject> _buildingFloors = new List<GameObject>();
         private List<Floor> _floors = new List<Floor>();
@@ -80,31 +81,42 @@ namespace Building
         public void DestroyFloor(Floor floor, bool isWeak)
         {
             //TODO: INSTANTIATE SMOKE/DESTRUCTION EFFECT
-        
+            StartCoroutine(DestroyBuilding(floor));
             if (isWeak)
             {
                 floor.gameObject.SetActive(false);
                 //TODO: ADD SCORE TO PLAYER
                 print("weak floor destroyed");
-                StartCoroutine(DestroyBuilding(true));
+                ClearBuilding();
             }
             else
             {
                 //TODO: GAME OVER
-                StartCoroutine(DestroyBuilding(false));
+                ClearBuilding();
                 print("game over");
             }
         }
 
-        private IEnumerator DestroyBuilding(bool isCorrect)
+        private IEnumerator DestroyBuilding(Floor floor)
         {
-            foreach (var floor in _floors)
-            {
-                floor.ChangeColor(isCorrect ? Color.green : Color.red);
-            }
-            yield return new WaitForSeconds(1f);
-            ClearBuilding();
+            var fx = Instantiate(destructionEffect, transform);
+            fx.transform.position = floor.transform.position;
+            var duration = fx.GetComponent<ParticleSystem>().main.duration;
+            yield return new WaitForSeconds(duration);
+            Destroy(fx);
+            gameObject.SetActive(false);
         }
+        
+        // private IEnumerator DestroyBuilding(bool isCorrect, GameObject effect)
+        // {
+        //     foreach (var floor in _floors)
+        //     {
+        //         floor.ChangeColor(isCorrect ? Color.green : Color.red);
+        //     }
+        //     yield return new WaitForSeconds(1f);
+        //     Destroy(effect);
+        //     ClearBuilding();
+        // }
 
     }
 }
