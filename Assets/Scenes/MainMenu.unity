@@ -1033,7 +1033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: -27}
+  m_AnchoredPosition: {x: 19, y: -4}
   m_SizeDelta: {x: 851.1172, y: 261.2745}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1596168851
@@ -1058,7 +1058,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b0ca5b6887e08a34bb63426218cb52de, type: 3}
-    m_FontSize: 169
+    m_FontSize: 229
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 1968743374}
   - component: {fileID: 1968743373}
   m_Layer: 0
-  m_Name: Capture
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
