@@ -5,20 +5,20 @@ namespace Core
 {
     public class GameManager : Singleton<GameManager>
     {
-        [Header("Building Movement")]
-        [Tooltip("Determines the rate of how slow the building moves. Higher is slower.")]
-        [SerializeField] private int buildingRate;
-        private float _buildingMovementRate;
+        
+        [Header("Building Movement")] 
+        [Range(0.1f,0.5f)]
+        [SerializeField] private float speedOverTime;
 
         /// <summary>
-        /// Global movement rate for buildings so that they move faster as the game goes on.
+        /// Ensures that the buildings that spawn go faster over time.
         /// </summary>
-        /// <returns>The movement rate for the building</returns>
-        public float BuildingMovementRate()
+        public float BuildingAccelerationRate()
         {
-            // buildingRate and 0.001f are random values chosen through trial and error until the movement feels natural.
-            _buildingMovementRate += Time.deltaTime / buildingRate * 0.001f;
-            return _buildingMovementRate;
+            //Reference:
+            //https://answers.unity.com/questions/1170967/how-to-get-speed-to-very-gradually-pick-up-over-ti.html
+            var accelerationRate = speedOverTime * Time.deltaTime / 100;
+            return accelerationRate;
         }
 
         public void GameOver()

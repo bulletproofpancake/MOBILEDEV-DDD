@@ -43,8 +43,8 @@ namespace Building
 
         private void Move()
         {
-            _movementSpeed += GameManager.Instance.BuildingMovementRate();
-            transform.Translate(Vector3.left * (_movementSpeed * Time.deltaTime));
+            _movementSpeed += GameManager.Instance.BuildingAccelerationRate();
+            transform.Translate(Vector3.left * _movementSpeed);
         }
 
         private void SpawnFloors()
