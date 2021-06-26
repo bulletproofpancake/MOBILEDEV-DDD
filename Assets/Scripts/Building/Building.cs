@@ -23,9 +23,15 @@ namespace Building
         private List<GameObject> _buildingFloors = new List<GameObject>();
         private List<Floor> _floors = new List<Floor>();
         private Floor _weakFloor;
-
-        private float _movementSpeed;
+        private Collider _collider;
         
+        private float _movementSpeed;
+
+        private void Start()
+        {
+            _collider = GetComponent<Collider>();
+        }
+
         private void OnEnable()
         {
             SpawnFloors();
@@ -134,9 +140,15 @@ namespace Building
                 //     fx = Instantiate(brokenEffect, transform);
                 // }
             #endregion
+            //Spawns the corresponding effect depending on the answer of the player
             var fx = isCorrect ? Instantiate(destructionEffect, transform) : Instantiate(brokenEffect, transform);
             fx.transform.position = floor.transform.position;
             var duration = fx.GetComponent<ParticleSystem>().main.duration;
+            
+            //Disables the building's colliders so that the despawner does not deactivate the building
+            //While the effect is still playing
+            _collider.enabled = false;
+            
             yield return new WaitForSeconds(duration);
             Destroy(fx);
             gameObject.SetActive(false);
