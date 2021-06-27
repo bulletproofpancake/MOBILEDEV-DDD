@@ -25,7 +25,7 @@ namespace Building
         private Floor _weakFloor;
         private Collider _collider;
         
-        private float _movementSpeed;
+        [SerializeField] private float _movementSpeed;
 
         private void Start()
         {
@@ -49,8 +49,8 @@ namespace Building
 
         private void Move()
         {
-            _movementSpeed += GameManager.Instance.BuildingAccelerationRate();
-            transform.Translate(Vector3.left * _movementSpeed);
+            _movementSpeed = GameManager.Instance.BuildingAccelerationRate();
+            transform.Translate(Vector3.left * (_movementSpeed * Time.deltaTime));
         }
 
         private void SpawnFloors()
