@@ -1,22 +1,15 @@
 using UnityEngine.Audio;
 using System;
+using Core;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
     public Sound[] sounds;
 
-    public static AudioManager instance;
-    void Awake()
+    protected override void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();

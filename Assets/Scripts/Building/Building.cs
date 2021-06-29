@@ -34,6 +34,8 @@ namespace Building
 
         private void OnEnable()
         {
+            if (_collider != null)
+                _collider.enabled = true;
             SpawnFloors();
         }
 
@@ -156,11 +158,10 @@ namespace Building
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Despawner"))
-            {
-                gameObject.SetActive(false);
-                GameManager.Instance.GameOver();
-            }
+            if (!other.CompareTag("Despawner")) return;
+            
+            GameManager.Instance.GameOver();
+            gameObject.SetActive(false);
         }
         // private IEnumerator DestroyBuilding(bool isCorrect, GameObject effect)
         // {

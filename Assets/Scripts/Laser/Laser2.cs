@@ -14,7 +14,7 @@ public class Laser2 : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            FindObjectOfType<AudioManager>().Play("atk");
+            AudioManager.Instance.Play("atk");
             Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             
 

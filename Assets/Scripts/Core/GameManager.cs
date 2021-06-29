@@ -34,6 +34,7 @@ namespace Core
         public void GameOver()
         {
             //TODO: GAME OVER
+            print("game over");
         }
         
     }
