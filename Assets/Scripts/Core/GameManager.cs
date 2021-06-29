@@ -5,8 +5,12 @@ namespace Core
 {
     public class GameManager : Singleton<GameManager>
     {
-        //Starts at 1 because starting from 0 is too slow
-        private float _accelerationRate = 1f;
+        [Header("Building Acceleration")]
+        // Sets how long it takes to reach maximum rate
+        // Higher is longer
+        [SerializeField] private float weight;
+        // Starts at 1 because starting from 0 is too slow
+        [SerializeField] private float _accelerationRate = 1f;
         [Tooltip("Set to a value that is still playable")]
         // Caps the speed of the game so that it is still playable
         [SerializeField] private float maxAccelerationRate;
@@ -16,8 +20,8 @@ namespace Core
         /// </summary>
         public float BuildingAccelerationRate()
         {
-            // Time.deltaTime is divided by 30f so that it takes longer to reach the maximum rate
-            _accelerationRate += Time.deltaTime / 30f;
+            // Time.deltaTime is divided by the weight so that it takes longer to reach the maximum rate
+            _accelerationRate += Time.deltaTime / weight;
             
             if (_accelerationRate >= maxAccelerationRate)
             {
