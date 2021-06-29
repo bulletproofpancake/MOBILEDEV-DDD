@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Core;
 using UnityEngine;
 
 public class Parallax : MonoBehaviour
@@ -25,6 +26,9 @@ public class Parallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //moveSpeed = GameManager.Instance.BuildingAccelerationRate();
+        if (GameManager.Instance.isGameOver) return;
+        
         newXposition = Mathf.Repeat(Time.time * -moveSpeed, offset);
 
         transform.position = startposition + Vector3.right * newXposition;
