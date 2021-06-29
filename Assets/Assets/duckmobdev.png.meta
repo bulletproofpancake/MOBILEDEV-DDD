@@ -1,12 +1,42 @@
 fileFormatVersion: 2
 guid: 58102255164eca54aa6c6ec885644b70
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6701160436684343671
+    second: duckmobdev_0
+  - first:
+      213: -2734925963864967888
+    second: duckmobdev_1
+  - first:
+      213: 4173426813467492244
+    second: duckmobdev_2
+  - first:
+      213: -9113094566897928191
+    second: duckmobdev_3
+  - first:
+      213: 2211214200195919388
+    second: duckmobdev_4
+  - first:
+      213: 8540423191587925206
+    second: duckmobdev_5
+  - first:
+      213: -8138243122716777759
+    second: duckmobdev_6
+  - first:
+      213: 7934601972564127954
+    second: duckmobdev_7
+  - first:
+      213: 1273071248859029383
+    second: duckmobdev_8
+  - first:
+      213: -1235354917560228911
+    second: duckmobdev_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -35,24 +65,24 @@ TextureImporter:
     filterMode: 0
     aniso: -1
     mipBias: -100
-    wrapU: -1
-    wrapV: -1
+    wrapU: 1
+    wrapV: 1
     wrapW: -1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 54
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -101,11 +131,221 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: duckmobdev_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 779c873b9ed4ffc50800000000000000
+      internalID: 6701160436684343671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckmobdev_1
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 0
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 035f5dc73579b0ad0800000000000000
+      internalID: -2734925963864967888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckmobdev_2
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49ff1d8339dfae930800000000000000
+      internalID: 4173426813467492244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckmobdev_3
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 0
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108b18f46c8c78180800000000000000
+      internalID: -9113094566897928191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckmobdev_4
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 0
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e2afc799fcfae10800000000000000
+      internalID: 2211214200195919388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckmobdev_5
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 0
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dc2b16c4ada58670800000000000000
+      internalID: 8540423191587925206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckmobdev_6
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 0
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e263b68ff62f0f80800000000000000
+      internalID: -8138243122716777759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckmobdev_7
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 0
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d07cc8647e5d1e60800000000000000
+      internalID: 7934601972564127954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckmobdev_8
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 0
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78f510a4e8bdaa110800000000000000
+      internalID: 1273071248859029383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckmobdev_9
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 0
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d36a476f332bdee0800000000000000
+      internalID: -1235354917560228911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
