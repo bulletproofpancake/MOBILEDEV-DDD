@@ -245,7 +245,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4369252538512562247, guid: 9ace4f042c344744282286ea09094ca7,
+          type: 3}
         m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
