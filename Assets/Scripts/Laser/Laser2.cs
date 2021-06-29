@@ -11,9 +11,10 @@ public class Laser2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Input.mousePosition);
+        
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            FindObjectOfType<AudioManager>().Play("atk");
             Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             
 
