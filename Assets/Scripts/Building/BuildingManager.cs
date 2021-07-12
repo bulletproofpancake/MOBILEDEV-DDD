@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using Core;
+using Rhythm;
+
 namespace Building
 {
     public class BuildingManager : MonoBehaviour
@@ -9,7 +11,11 @@ namespace Building
 
         private void Start()
         {
-            InvokeRepeating("Spawn", 0f, Random.Range(spawnRateMin, spawnRateMax));
+            AudioManager.Instance.Play("bgm");
+            
+            print(BeatScroller.Instance.beatTempo);
+            InvokeRepeating("Spawn", 0f, BeatScroller.Instance.beatTempo);
+            print(BeatScroller.Instance.beatTempo);
         }
 
         public void Spawn()

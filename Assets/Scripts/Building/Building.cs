@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Core;
+using Rhythm;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -51,7 +52,8 @@ namespace Building
 
         private void Move()
         {
-            _movementSpeed = GameManager.Instance.BuildingAccelerationRate();
+            //_movementSpeed = GameManager.Instance.BuildingAccelerationRate();
+            _movementSpeed = BeatScroller.Instance.beatTempo;
             transform.Translate(Vector3.left * (_movementSpeed * Time.deltaTime));
         }
 
