@@ -23,7 +23,7 @@ public class AudioManager : Singleton<AudioManager>
 
     private void Start()
     {
-        Play("bgm");
+        //Play("bgm");
     }
 
     public void Play(string name)

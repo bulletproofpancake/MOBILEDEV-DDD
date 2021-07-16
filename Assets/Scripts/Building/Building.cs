@@ -51,7 +51,7 @@ namespace Building
 
         private void Move()
         {
-            _movementSpeed = GameManager.Instance.BuildingAccelerationRate();
+            _movementSpeed = GameManager.Instance.bpm / 60f;
             transform.Translate(Vector3.left * (_movementSpeed * Time.deltaTime));
         }
 
@@ -158,10 +158,25 @@ namespace Building
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("Despawner")) return;
+
+            if (other.CompareTag("Activator"))
+            {
+                _weakFloor.ChangeColor(Color.green);
+            }
             
-            GameManager.Instance.GameOver();
-            gameObject.SetActive(false);
+            if (other.CompareTag("Despawner"))
+            {
+                GameManager.Instance.GameOver();
+                gameObject.SetActive(false);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Activator"))
+            {
+                _weakFloor.ChangeColor(Color.red);
+            }
         }
         // private IEnumerator DestroyBuilding(bool isCorrect, GameObject effect)
         // {
