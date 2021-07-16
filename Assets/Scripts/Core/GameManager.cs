@@ -42,8 +42,8 @@ namespace Core
             // returns when GameOver is called so that buildings stop moving
             if (isGameOver) return;
 
-            Time.timeScale += Time.deltaTime / bpm;
-            print(Time.timeScale);
+            // Time.timeScale += Time.deltaTime / bpm;
+            //print(Time.timeScale);
 
             // Time.deltaTime is divided by the weight so that it takes longer to reach the maximum rate
             // accelerationRate += Time.deltaTime / weight;
