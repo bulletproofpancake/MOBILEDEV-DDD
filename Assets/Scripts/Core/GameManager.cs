@@ -29,6 +29,8 @@ namespace Core
         {
             isGameOver = false;
             accelerationRate = 1f;
+            AudioManager.Instance.Stop("bgm");
+            AudioManager.Instance.Play("160bgm");
         }
         
         private void Update()
