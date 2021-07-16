@@ -34,6 +34,7 @@ namespace Core
             isGameOver = false;
             //accelerationRate = 1f;
             AudioManager.Instance.Stop("bgm");
+            Time.timeScale = 1f;
         }
         
         private void Update()
@@ -42,6 +43,7 @@ namespace Core
             if (isGameOver) return;
 
             Time.timeScale += Time.deltaTime / bpm;
+            print(Time.timeScale);
 
             // Time.deltaTime is divided by the weight so that it takes longer to reach the maximum rate
             // accelerationRate += Time.deltaTime / weight;
