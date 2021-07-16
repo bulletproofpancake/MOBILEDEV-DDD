@@ -9,7 +9,9 @@ namespace Building
 
         private void Start()
         {
-            InvokeRepeating("Spawn", 0f, Random.Range(spawnRateMin, spawnRateMax));
+            AudioManager.Instance.Play("160bgm");
+            var bpm = GameManager.Instance.bpm / 60f;
+            InvokeRepeating("Spawn", bpm, bpm);
         }
 
         public void Spawn()

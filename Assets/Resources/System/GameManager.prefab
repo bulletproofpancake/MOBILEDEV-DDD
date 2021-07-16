@@ -45,7 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPersist: 1
   isGameOver: 0
-  HighScore: 0
-  weight: 5
-  accelerationRate: 1
-  maxAccelerationRate: 20
+  highScore: 0
+  bpm: 160

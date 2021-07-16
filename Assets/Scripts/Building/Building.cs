@@ -1,13 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 namespace Building
 {
     public class Building : MonoBehaviour
     {
+        private enum HitState
+        {
+            Early,
+            Perfect,
+            Miss
+        }
+
+        [Serializable]
+        private class Score
+        {
+            public int early, perfect, miss;
+        }
+        
         [Header("Floor Spawning")]
         [SerializeField] private ObjectPool floorPool;
         [SerializeField] private int minNumberOfFloors;
@@ -18,14 +33,14 @@ namespace Building
         [SerializeField] private GameObject brokenEffect;
 
         [Header("Scoring")]
-        [SerializeField] private int scoreValue;
+        [SerializeField] private Score scoreValue;
 
         private List<GameObject> _buildingFloors = new List<GameObject>();
         private List<Floor> _floors = new List<Floor>();
         private Floor _weakFloor;
         private Collider _collider;
-        
-        [SerializeField] private float _movementSpeed;
+        private HitState _hitState;
+        private float _movementSpeed;
 
         private void Start()
         {
@@ -37,6 +52,7 @@ namespace Building
             if (_collider != null)
                 _collider.enabled = true;
             SpawnFloors();
+            _hitState = HitState.Early;
         }
 
         private void OnDisable()
@@ -51,7 +67,7 @@ namespace Building
 
         private void Move()
         {
-            _movementSpeed = GameManager.Instance.BuildingAccelerationRate();
+            _movementSpeed = GameManager.Instance.bpm / 60f;
             transform.Translate(Vector3.left * (_movementSpeed * Time.deltaTime));
         }
 
@@ -113,7 +129,20 @@ namespace Building
             if (isWeak)
             {
                 floor.gameObject.SetActive(false);
-                ScoreManager.Instance.AddScore(scoreValue);
+                switch (_hitState)
+                {
+                    case HitState.Early:
+                        ScoreManager.Instance.AddScore(scoreValue.early);
+                        break;
+                    case HitState.Perfect:
+                        ScoreManager.Instance.AddScore(scoreValue.perfect);
+                        break;
+                    case HitState.Miss:
+                        ScoreManager.Instance.AddScore(scoreValue.miss);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
                 ClearBuilding();
             }
             else
@@ -158,11 +187,29 @@ namespace Building
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("Despawner")) return;
+
+            if (other.CompareTag("Activator"))
+            {
+                _weakFloor.ChangeColor(Color.green);
+                _hitState = HitState.Perfect;
+            }
             
-            GameManager.Instance.GameOver();
-            gameObject.SetActive(false);
+            if (other.CompareTag("Despawner"))
+            {
+                GameManager.Instance.GameOver();
+                gameObject.SetActive(false);
+            }
         }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Activator"))
+            {
+                _weakFloor.ChangeColor(Color.red);
+                _hitState = HitState.Miss;
+            }
+        }
+        
         // private IEnumerator DestroyBuilding(bool isCorrect, GameObject effect)
         // {
         //     foreach (var floor in _floors)

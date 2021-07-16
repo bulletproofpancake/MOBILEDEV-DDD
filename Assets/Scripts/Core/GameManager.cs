@@ -9,18 +9,22 @@ namespace Core
         public bool isGameOver;
 
         public int highScore;
+
+        [Tooltip("Sets the bpm which the building spawner and movement speed follows")]
+        // Gets divided by 60 when used
+        public float bpm;
         
         #region Building Acceleration
 
-        [Header("Building Acceleration")]
+        // [Header("Building Acceleration")]
         // Sets how long it takes to reach maximum rate
         // Higher is longer
-        [SerializeField] private float weight;
+        // [SerializeField] private float weight;
         // Starts at 1 because starting from 0 is too slow
-        [SerializeField] private float accelerationRate = 1f;
-        [Tooltip("Set to a value that is still playable")]
+        // [SerializeField] private float accelerationRate = 1f;
+        //[Tooltip("Set to a value that is still playable")]
         // Caps the speed of the game so that it is still playable
-        [SerializeField] private float maxAccelerationRate;
+        // [SerializeField] private float maxAccelerationRate;
 
         /// <summary>
         /// Calls when the game starts so that the acceleration rate does not increase while in the main menu
@@ -28,32 +32,38 @@ namespace Core
         public void StartGame()
         {
             isGameOver = false;
-            accelerationRate = 1f;
+            //accelerationRate = 1f;
+            AudioManager.Instance.Stop("bgm");
+            Time.timeScale = 1f;
         }
         
         private void Update()
         {
             // returns when GameOver is called so that buildings stop moving
             if (isGameOver) return;
-            
+
+            Time.timeScale += Time.deltaTime / bpm;
+            print(Time.timeScale);
+
             // Time.deltaTime is divided by the weight so that it takes longer to reach the maximum rate
-            accelerationRate += Time.deltaTime / weight;
-            
-            if (accelerationRate >= maxAccelerationRate)
-            {
-                accelerationRate = maxAccelerationRate;
-            }
+            // accelerationRate += Time.deltaTime / weight;
+            //
+            // if (accelerationRate >= maxAccelerationRate)
+            // {
+            //     accelerationRate = maxAccelerationRate;
+            // }
         }
 
         /// <summary>
         /// Ensures that the buildings that spawn go faster over time.
         /// </summary>
-        public float BuildingAccelerationRate()
-        {
-            return accelerationRate;
-        }
+        // public float BuildingAccelerationRate()
+        // {
+        //     return accelerationRate;
+        // }
 
         #endregion
+        
         public void GameOver()
         {
             print("game over");
@@ -63,7 +73,7 @@ namespace Core
         private IEnumerator GameOverRoutine()
         {
             isGameOver = true;
-            accelerationRate = 0f;
+            // accelerationRate = 0f;
             ScoreManager.Instance.DisplayHighScore();
             yield return new WaitForSeconds(3f);
             Scenes.Instance.Load("MainMenu");

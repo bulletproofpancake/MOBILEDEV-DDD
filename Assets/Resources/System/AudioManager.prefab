@@ -63,3 +63,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: 160bgm
+    clip: {fileID: 8300000, guid: 72f5610928e5c5a40b8f92ddcbf286e1, type: 3}
+    volume: 0.667
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
