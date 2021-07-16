@@ -3,26 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Core;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 namespace Building
 {
     public class Building : MonoBehaviour
     {
-        private enum HitState
-        {
-            Early,
-            Perfect,
-            Miss
-        }
-
-        [Serializable]
-        private class Score
-        {
-            public int early, perfect, miss;
-        }
-        
         [Header("Floor Spawning")]
         [SerializeField] private ObjectPool floorPool;
         [SerializeField] private int minNumberOfFloors;
@@ -132,13 +118,13 @@ namespace Building
                 switch (_hitState)
                 {
                     case HitState.Early:
-                        ScoreManager.Instance.AddScore(scoreValue.early);
+                        ScoreManager.Instance.AddScore(scoreValue.early, _hitState);
                         break;
                     case HitState.Perfect:
-                        ScoreManager.Instance.AddScore(scoreValue.perfect);
+                        ScoreManager.Instance.AddScore(scoreValue.perfect, _hitState);
                         break;
                     case HitState.Miss:
-                        ScoreManager.Instance.AddScore(scoreValue.miss);
+                        ScoreManager.Instance.AddScore(scoreValue.miss, _hitState);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -222,4 +208,12 @@ namespace Building
         // }
 
     }
+    
+    public enum HitState
+    {
+        Early,
+        Perfect,
+        Miss
+    }
+    
 }
