@@ -53,9 +53,9 @@ MonoBehaviour:
   brokenEffect: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00,
     type: 3}
   scoreValue:
-    early: 2
-    perfect: 3
-    miss: 1
+    early: 1
+    perfect: 2
+    miss: 0
 --- !u!65 &5899754596869370414
 BoxCollider:
   m_ObjectHideFlags: 0

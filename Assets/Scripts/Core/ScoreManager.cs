@@ -54,6 +54,10 @@ namespace Core
                     break;
                 case HitState.Miss:
                     _stateCount.miss++;
+                    if (_stateCount.miss >= 10)
+                    {
+                        GameManager.Instance.GameOver();
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
