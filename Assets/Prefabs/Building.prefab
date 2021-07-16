@@ -52,8 +52,10 @@ MonoBehaviour:
     type: 3}
   brokenEffect: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00,
     type: 3}
-  scoreValue: 1
-  _movementSpeed: 0
+  scoreValue:
+    early: 2
+    perfect: 3
+    miss: 1
 --- !u!65 &5899754596869370414
 BoxCollider:
   m_ObjectHideFlags: 0
