@@ -66,7 +66,7 @@ namespace Building
             {
                 var floor = floorPool.GetPooledObject();
                 var position = transform.position;
-                floor.transform.position = new Vector3(position.x, position.y + (i * floor.transform.localScale.y), position.z);
+                floor.transform.position = new Vector3(position.x, position.y + (i * floor.transform.localScale.y / 100f), position.z);
                 _buildingFloors.Add(floor);
                 floor.GetComponent<Floor>().building = this;
                 floor.SetActive(true);
